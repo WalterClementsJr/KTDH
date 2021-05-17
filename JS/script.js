@@ -7,7 +7,7 @@ var canvas = document.getElementById('canvas'),
 
 function drawGrid() {
     // vẽ lưới tọa độ
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = '#bebebe';
     for (let i = 0; i < canvas.height; i += pSize) {
         for (let j = 0; j < canvas.width; j++) {
             ctx.fillRect(j, i, 1, 1);
@@ -19,7 +19,7 @@ function drawGrid() {
         }
     }
     // vẽ hệ tọa độ
-    ctx.fillStyle = '#2e89ff';
+    ctx.fillStyle = '#000000';
     let x = canvas.width / 2,
         y = canvas.height / 2;
 
@@ -269,89 +269,142 @@ function drawCircle(x0, y0, radius) {
         }
     }
 }
-function dashCircle(xc, yc, Radius)
-{
-    var x, y, p,dem, chieuDaiMoiDoan, khoangCachMoiDoan;
+
+function dashCircle(xc, yc, Radius) {
+    var x, y, p, dem, chieuDaiMoiDoan, khoangCachMoiDoan;
     x = 0;
     y = Radius;
     p = 3 - 2 * Radius;
-    dem=0;
-    chieuDaiMoiDoan=3;
-    khoangCachMoiDoan=1;
+    dem = 0;
+    chieuDaiMoiDoan = 3;
+    khoangCachMoiDoan = 1;
     // putPixel(xc + Radius, yc + 0);
     // putPixel(xc - Radius, yc - 0);
     // putPixel(xc -0, yc +Radius);
     // putPixel(xc +0, yc -Radius);
-    while (x < y){
-    if (p < 0)
-    p += 4 * x + 6;
-    else{
-    p += 4 * (x-y) + 10;
-    y--;
-    }
-    x++;
-    dem++;
-    if (dem>=1&&dem<=chieuDaiMoiDoan)
-    {
-        putPixel(xc + x, yc + y);
-        putPixel(xc - x, yc - y);
-        putPixel(xc -y, yc +x);
-        putPixel(xc +y, yc -x);
-        putPixel(xc + y, yc + x);
-        putPixel(xc - y, yc - x);
-        putPixel(xc -x, yc +y);
-        putPixel(xc +x, yc -y);
-    }
-    else
-    {
-        if (dem>chieuDaiMoiDoan&&dem<=khoangCachMoiDoan)
-        {
-            //không putPixel
+    while (x < y) {
+        if (p < 0)
+            p += 4 * x + 6;
+        else {
+            p += 4 * (x - y) + 10;
+            y--;
         }
-        else
-        {
-            dem=0;
+        x++;
+        dem++;
+        if (dem >= 1 && dem <= chieuDaiMoiDoan) {
+            putPixel(xc + x, yc + y);
+            putPixel(xc - x, yc - y);
+            putPixel(xc - y, yc + x);
+            putPixel(xc + y, yc - x);
+            putPixel(xc + y, yc + x);
+            putPixel(xc - y, yc - x);
+            putPixel(xc - x, yc + y);
+            putPixel(xc + x, yc - y);
         }
-    }
+        else {
+            if (dem > chieuDaiMoiDoan && dem <= khoangCachMoiDoan) {
+                //không putPixel
+            }
+            else {
+                dem = 0;
+            }
+        }
     }
     putPixel(xc + y, yc + y);
     putPixel(xc - y, yc - y);
-    putPixel(xc -y, yc +y);
-    putPixel(xc +y, yc -y);
+    putPixel(xc - y, yc + y);
+    putPixel(xc + y, yc - y);
 }
-function bresenhamCircle(xc, yc, Radius)
-{
+
+function bresenhamCircle(xc, yc, Radius) {
     var x, y, p;
     x = 0;
     y = Radius;
     p = 3 - 2 * Radius;
     putPixel(xc + Radius, yc + 0);
     putPixel(xc - Radius, yc - 0);
-    putPixel(xc -0, yc +Radius);
-    putPixel(xc +0, yc -Radius);
-    while (x < y){
-    if (p < 0)
-    p += 4 * x + 6;
-    else{
-    p += 4 * (x-y) + 10;
-    y--;
-    }
-    x++;
-    putPixel(xc + x, yc + y);
-    putPixel(xc - x, yc - y);
-    putPixel(xc -y, yc +x);
-    putPixel(xc +y, yc -x);
-    putPixel(xc + y, yc + x);
-    putPixel(xc - y, yc - x);
-    putPixel(xc -x, yc +y);
-    putPixel(xc +x, yc -y);
+    putPixel(xc - 0, yc + Radius);
+    putPixel(xc + 0, yc - Radius);
+    while (x < y) {
+        if (p < 0)
+            p += 4 * x + 6;
+        else {
+            p += 4 * (x - y) + 10;
+            y--;
+        }
+        x++;
+        putPixel(xc + x, yc + y);
+        putPixel(xc - x, yc - y);
+        putPixel(xc - y, yc + x);
+        putPixel(xc + y, yc - x);
+        putPixel(xc + y, yc + x);
+        putPixel(xc - y, yc - x);
+        putPixel(xc - x, yc + y);
+        putPixel(xc + x, yc - y);
     }
     putPixel(xc + y, yc + y);
     putPixel(xc - y, yc - y);
-    putPixel(xc -y, yc +y);
-    putPixel(xc +y, yc -y);
+    putPixel(xc - y, yc + y);
+    putPixel(xc + y, yc - y);
 }
 
+//  midpoint algorithm
+function drawEllipse(xc, yc, rx, ry) {
+    let x = 0, y = ry;
+	let p1, p2;
+
+	// for region 1
+	p1 = (ry * ry) - (rx * rx * ry)+ (0.25 * rx * rx)
+	while ((2 * ry * ry * x) <= (2 * rx * rx * y)) {
+		if (p1 < 0) {
+			x = x + 1
+			p1 = p1 + (2 * ry * ry * x) + (ry * ry) 
+		} else {
+			x = x + 1;
+			y = y - 1;
+			p1 = p1 + (2 * ry * ry * x) - (2 * rx * rx * y) + (ry * ry);
+		}
+        
+        // nửa trên
+        if (true) {
+            ctx.fillStyle="red"
+            fillPixel(x + xc, -y + yc)
+		    fillPixel(-x + xc, -y + yc)
+            ctx.fillStyle="black"
+        }
+
+         // nửa dưới
+        fillPixel(x + xc, y + yc)
+        fillPixel(-x + xc, y + yc)
+	}
+
+	// for region 2
+	p2 = ((x + 0.5) * (x + 0.5) * ry * ry) + ((y - 1) * (y - 1) * rx * rx) - (rx * rx * ry * ry)
+	while (y != 0) {
+		if (p2 > 0) {
+			y = y - 1
+			p2 = p2 - (2 * y * rx * rx) + (rx * rx) 
+		} else {
+			x = x + 1
+			y = y - 1
+			p2 = p2 - (2 * y * rx * rx) + (2 * x * ry * ry) + (rx * rx)  
+		}
+
+		// nửa trên
+        if (true) {
+            ctx.fillStyle="blue"
+            fillPixel(x + xc, -y + yc)
+		    fillPixel(-x + xc, -y + yc)
+            ctx.fillStyle="black"
+        }
+
+         // nửa dưới
+        fillPixel(x + xc, y + yc)
+        fillPixel(-x + xc, y + yc)
+	}
+}
+
+// listeners
 canvas.addEventListener('click', function (evt) {
     var mousePos = getMousePos(canvas, evt);
     position = getPixelPos(mousePos.x, mousePos.y);
@@ -380,7 +433,7 @@ window.addEventListener('mouseup', function (evt) {
     }
 });
 
-document.getElementById('testBtn').addEventListener('click', function(evt) {
+document.getElementById('testBtn').addEventListener('click', function (evt) {
     ctx.fillStyle = '#' + Math.random().toString(16).slice(-6);
 });
 

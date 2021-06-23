@@ -7,4 +7,4 @@ Các thành viên:
 + Tơ Bùi
 + Triều Đình
 
-## Demo ở [đây](https://walterclementsjr.github.io/KTDH/index.html)
+## Demo ở [đây](https://walterclementsjr.github.io/KTDH_JS/index.html)

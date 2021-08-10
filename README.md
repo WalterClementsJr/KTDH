@@ -8,3 +8,5 @@ Các thành viên:
 + Triều Đình
 
 ## Demo ở [đây](https://walterclementsjr.github.io/KTDH_JS/index.html)
+
+Note: Đồ án đã bị bỏ dở do nhóm đồng ý chuyển sang Java

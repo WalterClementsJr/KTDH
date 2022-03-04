@@ -1,131 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Drawing</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Drawing</title>
 </head>
-
 <body>
-  <header class="header"></header>
-  <nav class="navigation"></nav>
-  <div class="content">
-    <!-- <div class="menu">
-      <div class="menu-container">
-        <div class="menu-button extras-menu-button" tabindex="-1">Files</div>
-      </div>
-      <div class="menu-container">
-        <div class="menu-button extras-menu-button" tabindex="-1">Edit</div>
-      </div>
-      <div class="menu-container">
-        <div class="menu-button extras-menu-button" tabindex="-1">Image</div>
-      </div>
-      <div class="menu-container">
-        <div class="menu-button extras-menu-button" tabindex="-1">Help</div>
-      </div>
-      <div class="menu-container">
-        <div class="menu-button extras-menu-button" tabindex="-1">About</div>
-      </div>
-      <div class="menu-container">
-        <div class="menu-button extras-menu-button" tabindex="-1">Files</div>
-      </div>
-    </div> -->
-    <div class="horizontal">
-      <div style="display: flex;flex-direction: column;">
-        <div class="tool">
-          <button id="testBtn">Random color</button>
-          <button id="clearBtn">Clear</button>
-          <button id="saveBtn">Save</button>
-          <button id="resetBtn">Reset</button>
+    <header class="header"></header>
+    <nav class="navigation"></nav>
+    <div class="content">
+        <div class="horizontal">
+            <div style="display: flex;flex-direction: column;">
+                <div class="tool">
+                    <button id="randomColor">Random color</button>
+                    <button id="clearBtn">Clear</button>
+                    <button id="saveBtn">Save</button>
+                    <button id="resetBtn">Reset</button>
+                </div>
+            </div>
+            <canvas id='canvas' height="600" , width="800"></canvas>
         </div>
-        <div class="homework">
-          <button class="dropbtn">Homework</button>
-          <div class="dropdown-content">
-            <!-- <div id='BT1'>BT 1</div> -->
-            <div id='bt2'>BT 1+2</div>
-            <div id='bt3'>BT 3</div>
-            <div id='bt4'>BT 4</div>
-          </div>
-        </div>
-      </div>
-      <canvas id='canvas' height="600" , width="800"></canvas>
     </div>
-    <div class="component-color" touch-action="none" style="position: relative; left: 3px;">
-      <!-- <div class="color-box">
-        <div class="palette";>
-          <div class="color-button"><canvas style="background-color: rgb(0,0,0); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(128,128,128); pointer-events: none;"
-              width="13" height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(128,0,0); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(128,128,0); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(0,128,0); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(0,128,128); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(0,0,128); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(128,0,128); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(128,128,64); pointer-events: none;"
-              width="13" height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(0,64,64); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(0,128,255); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(0,64,128); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(64,0,255); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(128,64,0); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(255,255,255); pointer-events: none;"
-              width="13" height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(192,192,192); pointer-events: none;"
-              width="13" height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(255,0,0); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(255,255,0); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(0,255,0); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(0,255,255); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(0,0,255); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(255,0,255); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(255,255,128); pointer-events: none;"
-              width="13" height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(0,255,128); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(128,255,255); pointer-events: none;"
-              width="13" height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(128,128,255); pointer-events: none;"
-              width="13" height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(255,0,128); pointer-events: none;" width="13"
-              height="13"></canvas></div>
-          <div class="color-button"><canvas style="background-color: rgb(255,128,64); pointer-events: none;"
-              width="13" height="13"></canvas></div>
-        </div>
-      </div> -->
-    </div>
-    <footer class="footer">
-      <p>Các thành viên:</p>
-      <div style="display: flex columns; text-align: left;">
-        <ul>Lê Đình Triều</ul>
-        <ul>Nguyễn Tân Thiên</ul>
-        <ul>Nguyễn Thanh Tú</ul>
-        <ul>Nguyễn Mạnh Tường</ul>
-        <ul>Bùi Minh Tơ</ul>
-      </div>
-    </footer>
 </body>
-<script src="JS/script.js"></script>
-<script src="JS/main.js"></script>
+<script src="js/script.js"></script>
 </html>

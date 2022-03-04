@@ -5,7 +5,7 @@ var canvas = document.getElementById('canvas'),
     isDrawing,
     position;
 
-function drawGrid() {
+    function drawGrid() {
     // vẽ lưới tọa độ
     ctx.fillStyle = '#bebebe';
     for (let i = 0; i < canvas.height; i += pSize) {
@@ -21,7 +21,7 @@ function drawGrid() {
     // vẽ hệ tọa độ
     ctx.fillStyle = '#000000';
     let x = canvas.width / 2,
-        y = canvas.height / 2;
+    y = canvas.height / 2;
 
     for (let i = 0; i < canvas.height; i++) {
         ctx.fillRect(x, i, 1, 1);
@@ -64,12 +64,12 @@ function putPixel(x, y) {
 function drawLine(x0, y0, x1, y1) {
     // DDA algorithm
     const dx = x1 - x0,
-        dy = y1 - y0,
-        s = Math.abs(dx) > Math.abs(dy) ? Math.abs(dx) : Math.abs(dy),
-        xi = dx * 1.0 / s,
-        yi = dy * 1.0 / s;
+    dy = y1 - y0,
+    s = Math.abs(dx) > Math.abs(dy) ? Math.abs(dx) : Math.abs(dy),
+    xi = dx * 1.0 / s,
+    yi = dy * 1.0 / s;
     var x = x0,
-        y = y0;
+    y = y0;
 
     fillPixel(x0, y0);
     for (let i = 0; i < s; i++) {
@@ -236,7 +236,7 @@ function drawArrow(x1, y1, x2, y2) {
 
 function drawRectangle(x, y, w, h) {
     let x1 = x + w,
-        y1 = y + h;
+    y1 = y + h;
     drawLine(x, y, x1, y);
     drawLine(x1, y, x1, y1);
     drawLine(x1, y1, x, y1);
@@ -246,8 +246,8 @@ function drawRectangle(x, y, w, h) {
 function drawCircle(x0, y0, radius) {
     // mid-point algorithm
     var x = radius,
-        y = 0,
-        radiusError = 1 - x;
+    y = 0,
+    radiusError = 1 - x;
 
     while (x >= y) {
         fillPixel(x + x0, y + y0);
@@ -351,64 +351,63 @@ function bresenhamCircle(xc, yc, Radius) {
 //  midpoint algorithm
 function drawEllipse(xc, yc, rx, ry) {
     let x = 0, y = ry;
-	let p1, p2;
+    let p1, p2;
 
 	// for region 1
 	p1 = (ry * ry) - (rx * rx * ry)+ (0.25 * rx * rx)
 	while ((2 * ry * ry * x) <= (2 * rx * rx * y)) {
 		if (p1 < 0) {
 			x = x + 1
-			p1 = p1 + (2 * ry * ry * x) + (ry * ry) 
+			p1 = p1 + (2 * ry * ry * x) + (ry * ry)
 		} else {
 			x = x + 1;
 			y = y - 1;
 			p1 = p1 + (2 * ry * ry * x) - (2 * rx * rx * y) + (ry * ry);
 		}
-        
+
         // nửa trên
         if (true) {
             ctx.fillStyle="red"
             fillPixel(x + xc, -y + yc)
-		    fillPixel(-x + xc, -y + yc)
+            fillPixel(-x + xc, -y + yc)
             ctx.fillStyle="black"
         }
 
          // nửa dưới
-        fillPixel(x + xc, y + yc)
-        fillPixel(-x + xc, y + yc)
-	}
+         fillPixel(x + xc, y + yc)
+         fillPixel(-x + xc, y + yc)
+     }
 
 	// for region 2
 	p2 = ((x + 0.5) * (x + 0.5) * ry * ry) + ((y - 1) * (y - 1) * rx * rx) - (rx * rx * ry * ry)
 	while (y != 0) {
 		if (p2 > 0) {
 			y = y - 1
-			p2 = p2 - (2 * y * rx * rx) + (rx * rx) 
+			p2 = p2 - (2 * y * rx * rx) + (rx * rx)
 		} else {
 			x = x + 1
 			y = y - 1
-			p2 = p2 - (2 * y * rx * rx) + (2 * x * ry * ry) + (rx * rx)  
+			p2 = p2 - (2 * y * rx * rx) + (2 * x * ry * ry) + (rx * rx)
 		}
 
 		// nửa trên
         if (true) {
             ctx.fillStyle="blue"
             fillPixel(x + xc, -y + yc)
-		    fillPixel(-x + xc, -y + yc)
+            fillPixel(-x + xc, -y + yc)
             ctx.fillStyle="black"
         }
 
          // nửa dưới
-        fillPixel(x + xc, y + yc)
-        fillPixel(-x + xc, y + yc)
-	}
-}
+         fillPixel(x + xc, y + yc)
+         fillPixel(-x + xc, y + yc)
+     }
+ }
 
 // listeners
 canvas.addEventListener('click', function (evt) {
     var mousePos = getMousePos(canvas, evt);
     position = getPixelPos(mousePos.x, mousePos.y);
-    console.log(position);
 });
 
 canvas.addEventListener('mousedown', function (evt) {
@@ -433,10 +432,12 @@ window.addEventListener('mouseup', function (evt) {
     }
 });
 
-document.getElementById('testBtn').addEventListener('click', function (evt) {
+// generate a random color
+document.getElementById('randomColor').addEventListener('click', function (evt) {
     ctx.fillStyle = '#' + Math.random().toString(16).slice(-6);
 });
 
+// clear canvas to latest save
 document.getElementById('clearBtn').addEventListener('click', function (evt) {
     if (imgd != null) {
         ctx.putImageData(imgd, 0, 0);
@@ -449,8 +450,9 @@ document.getElementById('saveBtn').addEventListener('click', function (evt) {
     imgd = ctx.getImageData(0, 0, canvas.width, canvas.height);
 });
 
+// clear canvas
 document.getElementById('resetBtn').addEventListener('click', function (evt) {
     ctx.putImageData(defaultCanvas, 0, 0);
 });
 
-
+drawGrid();

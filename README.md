@@ -1,12 +1,10 @@
-# Bài tập/Đồ án kỹ thuật đồ họa
+# JS Drawing Graphics using Canvas API
 
-Các thành viên:
-+ Nguyễn Thanh Tú
+## Maintainers:
+
 + Nguyễn Tấn Thiên
 + Tường Nguyễn
-+ Tơ Bùi
-+ Triều Đình
 
-## Demo ở [đây](https://walterclementsjr.github.io/KTDH_JS/index.html)
+## [Demo here](https://walterclementsjr.github.io/KTDH_JS/index.html)
 
-Note: Đồ án đã bị bỏ dở do nhóm đồng ý chuyển sang Java
+Note: project has been moved to Java

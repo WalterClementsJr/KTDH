@@ -5,6 +5,6 @@
 + Nguyễn Tấn Thiên
 + Tường Nguyễn
 
-## [Demo here](https://walterclementsjr.github.io/KTDH_JS/index.html)
+## [Live Demo](https://walterclementsjr.github.io/KTDH_JS/index.html)
 
-Note: project has been moved to Java
+Note: project has been moved to [Java](https://github.com/tuong1008/KyThuatDoHoa)
